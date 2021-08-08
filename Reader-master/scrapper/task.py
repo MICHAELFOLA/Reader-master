@@ -9,7 +9,8 @@ chrome_options.binary_location = os.environ.get("GOOGLE_CHROME_BIN")
 chrome_options.add_argument("--headless")
 chrome_options.add_argument("--disable-dev-shm-usage")
 chrome_options.add_argument("--no-sandbox")
-driver = webdriver.Chrome(executable_path=os.environ.get("CHROMEDRIVER_PATH"), chrome_options=chrome_options)
+
+# driver = webdriver.Chrome(executable_path=os.environ.get("CHROMEDRIVER_PATH"), chrome_options=chrome_options)
 import chromedriver_binary  # Adds chromedriver binary to path
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver import ActionChains
@@ -19,6 +20,12 @@ from bs4 import BeautifulSoup as soup
 import csv
 import pandas as pd
 import string
+
+from selenium import webdriver
+from webdriver_manager.chrome import ChromeDriverManager
+
+driver = webdriver.Chrome(ChromeDriverManager().install())
+
 
 def add(request):
 
