@@ -15,8 +15,8 @@ def webcrawl_input(request):
         form = WebForm(request.GET)
         if form.is_valid():
             cd = form.cleaned_data
-            message = f"{cd['Content_Type']}  and {cd['Article_Title']} and {cd['Words_Per_Column']}"
-            request.session['url'] = cd['Content_Type']
+            message = f"{cd['Article_Url']}  and {cd['Article_Title']} and {cd['Words_Per_Column']}"
+            request.session['url'] = cd['Article_Url']
             request.session['sub'] = cd['Article_Title']
             request.session['char'] = cd['Words_Per_Column']
             task = True
