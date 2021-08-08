@@ -3,12 +3,21 @@ from selenium import webdriver
 from django.http import JsonResponse
 from django.views.generic import ListView
 from selenium.webdriver.common.by import By
-# import os
+import os
 # chrome_options = webdriver.ChromeOptions()
 # chrome_options.binary_location = os.environ.get("GOOGLE_CHROME_BIN")
 # chrome_options.add_argument("--headless")
 # chrome_options.add_argument("--disable-dev-shm-usage")
 # chrome_options.add_argument("--no-sandbox")
+
+# option = webdriver.ChromeOptions()
+# option.add_argument('headless')
+# driver = webdriver.Chrome('path/to/chromedriver',options=option)
+
+from selenium import webdriver   # for webdriver
+# from selenium.webdriver.support.ui import WebDriverWait  # for implicit and explict waits
+# from selenium.webdriver.chrome.options import Options  # for suppressing the browser
+
 
 # driver = webdriver.Chrome(executable_path=os.environ.get("CHROMEDRIVER_PATH"), chrome_options=chrome_options)
 import chromedriver_binary  # Adds chromedriver binary to path
@@ -21,13 +30,16 @@ import csv
 import pandas as pd
 import string
 
-from selenium import webdriver
+
 from webdriver_manager.chrome import ChromeDriverManager
 
-driver = webdriver.Chrome(ChromeDriverManager().install())
+# driver = webdriver.Chrome(ChromeDriverManager().install())
+# driver = webdriver.PhantomJS(executable_path=('C:\Users\folar\Downloads\phantomjs-2.1.1-windows\phantomjs-2.1.1-windows\bin')
+                             
+                        
 
 
-def add(request):
+def add(request):   
 
     website = "https://www.readworks.org/"
     article_url =  request.session.get('url')
@@ -36,14 +48,14 @@ def add(request):
 
 
     def crawler():
-        driver = webdriver.Chrome()
+        # driver = webdriver.Chrome()                            
+        driver = webdriver.Chrome(ChromeDriverManager().install())
         driver.get(website)
         driver.find_element_by_class_name("log-in-button").click()
         driver.find_element_by_name("email").send_keys("xroydacute@yahoo.com")
         driver.find_element_by_name("password").send_keys("python")
         driver.find_element_by_class_name("submit").click()
-    #     sleep(1)
-    #     driver.get("https://www.readworks.org/find-content")
+  
         sleep(5)
         
         driver.get(article_url)
