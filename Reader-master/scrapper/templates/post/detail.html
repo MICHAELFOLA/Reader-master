@@ -129,7 +129,7 @@
         function buttonclickhandler() {
             var request = new XMLHttpRequest()
 
-            request.open('GET', 'http://127.0.0.1:8000/result', true)
+            request.open('GET', '/result', true)
             request.onload = function() {
                 // Begin accessing JSON data here
                 var data = JSON.parse(this.response)
