@@ -44,7 +44,7 @@ def add(request):
     website = "https://www.readworks.org/"
     article_url =  request.session.get('url')
     subheading =  request.session.get('sub')
-    n =  request.session.get('char')
+    n =  int(request.session.get('char'))
 
 
     def crawler():
